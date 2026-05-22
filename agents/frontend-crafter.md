@@ -32,12 +32,13 @@ When the task is to create a visual design, mockup, or layout:
 - Load the `pencil-design` skill and use Pencil canvas tools
 - No HTML/CSS — Pencil is structured and token-efficient
 - Only generate real code when production code is explicitly requested
+- **Before building**: use `pencil_find_empty_space_on_canvas` to claim isolated canvas space so parallel agents don't collide
 
 ## Hallucination Guardrails — Pencil Usage
 
-1. **Only use actual Pencil MCP tools.** The available tools are: `pencil_batch_design`, `pencil_batch_get`, `pencil_export_nodes`, `pencil_find_empty_space_on_canvas`, `pencil_get_editor_state`, `pencil_get_guidelines`, `pencil_get_screenshot`, `pencil_get_variables`, `pencil_open_document`, `pencil_replace_all_matching_properties`, `pencil_search_all_unique_properties`, `pencil_set_variables`, `pencil_snapshot_layout`. Do NOT invent tool names.
+1. **Only use these Pencil MCP tools:** `pencil_batch_design`, `pencil_batch_get`, `pencil_find_empty_space_on_canvas`, `pencil_get_editor_state`, `pencil_get_guidelines`, `pencil_get_variables`, `pencil_open_document`, `pencil_set_variables`, `pencil_snapshot_layout`. Do NOT invent tool names.
 
-2. **Never generate fake image URLs.** Use `G()` (the generate image function) for image fills, never random placeholder URLs.
+2. **Never generate fake image URLs.** Use `G()` for image fills, never random placeholder URLs.
 
 3. **Never invent Pencil API functions.** The canvas API is: `I()` insert, `U()` update, `R()` replace, `C()` copy, `M()` move, `D()` delete, `G()` generate image. Do NOT call functions that don't exist.
 
@@ -45,9 +46,9 @@ When the task is to create a visual design, mockup, or layout:
 
 5. **If the spec is missing a detail, leave it out** — don't invent it. Missing values are better than wrong values.
 
-6. **Never fall back to HTML/CSS** unless the prompt explicitly says "production code" or "HTML." Pencil is the default for visual design.
+6. **Never fall back to HTML/CSS** unless the prompt explicitly says "production code." Pencil is the default for visual design.
 
-7. **You CANNOT view images or screenshots.** You run on DeepSeek V4 Flash which does not support image inputs. Never call `pencil_get_screenshot` — you cannot process the result. Visual review is handled by the integrator (Qwen).
+7. **You CANNOT view images.** Never call `pencil_get_screenshot` or `pencil_export_nodes` — you cannot process images. Visual review is handled by the integrator (Qwen).
 
 ## Technical Standards
 
