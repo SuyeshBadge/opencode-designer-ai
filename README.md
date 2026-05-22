@@ -36,11 +36,12 @@ The script:
 
 | Agent | Model | Role | Permission |
 |-------|-------|------|------------|
-| `design-director` | Kimi K2.6 | Orchestrator / POC — receives requests, delegates, delivers | edit: `.md`/`.json` only |
+| `design-director` | DeepSeek V4 Flash | Orchestrator / POC — receives requests, delegates, delivers | edit: `.md`/`.json` only |
 | `visual-designer` | Kimi K2.6 | Aesthetic vision, color, typography, motion | bash: deny |
-| `ux-architect` | DeepSeek V4 Pro | IA, user flows, wireframes, accessibility | bash: deny |
+| `ux-architect` | DeepSeek V4 Pro | Splits vision into parallel section specs, dispatches N× Flash agents | bash: deny, task: allow |
 | `design-researcher` | DeepSeek V4 Pro | Competitive analysis, trend research | edit: deny, bash: deny |
-| `frontend-crafter` | DeepSeek V4 Flash | Production code (React, Next.js, Tailwind) | unrestricted |
+| `frontend-crafter` | DeepSeek V4 Flash | Builds one Pencil section at a time (runs in parallel) | unrestricted |
+| `design-integrator` | **Qwen 3.6 Plus** | Takes all sections, screenshots, analyzes, rearranges, polishes visually | bash: deny |
 | `design-critic` | DeepSeek V4 Flash | QA, accessibility audit, polish review | edit: deny, bash: deny |
 
 ## Credit-Optimized Workflow
