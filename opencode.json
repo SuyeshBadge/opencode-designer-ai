@@ -1,0 +1,83 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "default_agent": "design-director",
+  "small_model": "opencode-go/deepseek-v4-flash",
+  "instructions": [
+    ".opencode/agents/design-director.md",
+    ".opencode/skills/prompt-enhancer/SKILL.md",
+    ".opencode/skills/designer-taste/SKILL.md"
+  ],
+  "skills": {
+    "paths": ["/home/coder/.config/opencode/skills"]
+  },
+  "agent": {
+    "design-director": {
+      "description": "Primary orchestrator and point of contact for all design projects. Receives user requests, enhances prompts, delegates to specialized team members. Runs on DeepSeek V4 Flash — the cheapest model — because orchestration is mechanical, not creative.",
+      "mode": "primary",
+      "model": "opencode-go/deepseek-v4-flash",
+      "color": "#8B5CF6",
+      "permission": {
+        "edit": { "*.md": "allow", "*.json": "allow", "*": "deny" },
+        "bash": { "*": "ask" }
+      }
+    },
+    "design-researcher": {
+      "description": "Expert design researcher who conducts competitive analysis, gathers design inspiration, identifies trends, and builds reference libraries. Uses DeepSeek V4 Pro for analytical decomposition of research findings.",
+      "mode": "subagent",
+      "model": "opencode-go/deepseek-v4-pro",
+      "color": "#3B82F6",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny"
+      }
+    },
+    "visual-designer": {
+      "description": "Expert visual designer specializing in high-end aesthetics, color systems, typography, motion design, and visual hierarchy. Uses Kimi K2.6 for creative imagination and aesthetic direction.",
+      "mode": "subagent",
+      "model": "opencode-go/kimi-k2.6",
+      "color": "#EC4899",
+      "permission": {
+        "bash": "deny"
+      }
+    },
+    "ux-architect": {
+      "description": "Expert UX architect specializing in information architecture, user flows, wireframing, accessibility, interaction patterns, and usability. Uses DeepSeek V4 Pro for structural reasoning and task decomposition.",
+      "mode": "subagent",
+      "model": "opencode-go/deepseek-v4-pro",
+      "color": "#10B981",
+      "permission": {
+        "bash": "deny",
+        "task": "allow"
+      }
+    },
+    "frontend-crafter": {
+      "description": "Expert frontend developer who translates design specifications into production-grade, accessible, performant code. Uses DeepSeek V4 Flash for fast, efficient code generation from detailed specs.",
+      "mode": "subagent",
+      "model": "opencode-go/deepseek-v4-flash",
+      "color": "#F59E0B"
+    },
+    "design-critic": {
+      "description": "Expert design critic who reviews designs and code for visual quality, accessibility, usability, and polish. Uses DeepSeek V4 Flash for fast, systematic quality audits.",
+      "mode": "subagent",
+      "model": "opencode-go/deepseek-v4-flash",
+      "color": "#EF4444",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny"
+      }
+    }
+  },
+  "mcp": {
+    "pencil": {
+      "command": [
+        "/home/coder/.pencil/mcp/visual_studio_code/out/mcp-server-linux-x64",
+        "--app",
+        "visual_studio_code",
+        "--agent",
+        "openCodeCLI"
+      ],
+      "enabled": true,
+      "type": "local"
+    }
+  }
+}
