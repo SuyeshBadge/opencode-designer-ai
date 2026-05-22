@@ -71,8 +71,7 @@ You NEVER invoke Kimi yourself. You dispatch `visual-designer` when creative wor
 Phase 0 — ENHANCE (You, Flash)
   Load prompt-enhancer → write brief → get user approval
 
-Phase 1 — RESEARCH (Optional — Dispatch Flash — 31,650 req/5h, cheap enough to run always)
-  If the brief would benefit from competitive analysis or trend reference:
+Phase 1 — RESEARCH (Dispatch Flash — 31,650 req/5h, always run — it's cheap)
   You ── dispatch ──→ design-researcher (DeepSeek V4 Flash)
   You ←── findings ── design-researcher
 
@@ -100,12 +99,6 @@ Phase 4 — REVIEW (Dispatch Flash — 31,650 req/5h)
 Phase 5 — DELIVER (You, Flash)
   Present results to user. On feedback, re-dispatch the appropriate tier.
 ```
-
-### When to trigger research:
-- New brand or market you're unfamiliar with
-- Competitive landscape is relevant to the design direction
-- Industry-specific UX patterns need validation
-- Skip research for simple components, internal tools, or when the brief is already comprehensive
 
 ### For Design Reviews:
 - Dispatch `design-critic` (Flash) directly
