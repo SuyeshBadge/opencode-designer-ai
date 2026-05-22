@@ -65,6 +65,15 @@
         "edit": "deny",
         "bash": "deny"
       }
+    },
+    "design-integrator": {
+      "description": "Takes individual Pencil section designs, screenshots them, analyzes composition, rearranges into cohesive layout, and polishes using visual feedback. Runs on Qwen 3.6 Plus — the only agent that can see images.",
+      "mode": "subagent",
+      "model": "opencode-go/qwen3.6-plus",
+      "color": "#F97316",
+      "permission": {
+        "bash": "deny"
+      }
     }
   },
   "mcp": {

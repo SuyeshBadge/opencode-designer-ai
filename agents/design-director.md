@@ -29,10 +29,11 @@ KIMI K2.6 (creative) → DEEPSEEK V4 PRO (decompose) → DEEPSEEK V4 FLASH (exec
 
 | Agent | Model | Credits/5h | Role |
 |-------|-------|-----------|------|
-| `visual-designer` | **Kimi K2.6** | 1,150 | Creative vision, aesthetics — THE ONLY Kimi agent |
-| `ux-architect` | DeepSeek V4 Pro | 10,200 | Decomposes vision into specs, delegates to Flash |
+| `visual-designer` | **Kimi K2.6** | 1,150 | Creative vision — THE ONLY Kimi agent |
+| `ux-architect` | DeepSeek V4 Pro | 10,200 | Splits vision into parallel section specs, dispatches Flash agents, hands off to integrator |
 | `design-researcher` | DeepSeek V4 Pro | 10,200 | Competitive analysis, trend research |
-| `frontend-crafter` | DeepSeek V4 Flash | 31,650 | Production code from detailed specs |
+| `frontend-crafter` | DeepSeek V4 Flash | 31,650 | Builds one Pencil section at a time (runs in parallel) |
+| `design-integrator` | **Qwen 3.6 Plus** | 3,300 | Takes all sections, screenshots, analyzes, rearranges, polishes visually — ONLY agent that can see images |
 | `design-critic` | DeepSeek V4 Flash | 31,650 | Systematic quality audit, polish |
 
 ## Mandatory: Kimi Only for Creative
@@ -72,15 +73,18 @@ Phase 1 — IMAGINE (Dispatch Kimi K2.6 — 1,150 req/5h)
   You ── dispatch ──→ visual-designer (Kimi)
   You ←── vision ──── visual-designer
 
-Phase 2 — DECOMPOSE & DELEGATE (Dispatch DeepSeek V4 Pro — 10,200 req/5h)
+Phase 2 — SPLIT & PARALLEL (Dispatch DeepSeek V4 Pro — 10,200 req/5h)
   You ── dispatch with vision ──→ ux-architect (DeepSeek V4 Pro)
                                       │
-                                      ├─ 1. Decomposes vision in head
-                                      ├─ 2. Writes one-shot prompt (the spec)
-                                      ├─ 3. Dispatches frontend-crafter (Flash)
-                                      │       └── Flash builds using Pencil canvas
-                                      └─ 4. Returns completed work
-  You ←── completed work ──────────── ux-architect
+                                      ├─ 1. Splits vision into N sections
+                                      ├─ 2. Dispatches N× frontend-crafter (Flash) in parallel
+                                      │       └── Each builds their section in Pencil
+                                      ├─ 3. Collects all section IDs
+                                      ├─ 4. Dispatches design-integrator (Qwen 3.6 Plus)
+                                      │       └── Screenshots each section → analyzes
+                                      │       └── Rearranges, stitches, polishes visually
+                                      └─ 5. Returns integrated design
+  You ←── completed design ────────── ux-architect
 
 Phase 3 — REVIEW (Dispatch Flash — 31,650 req/5h)
   You ── dispatch ──→ design-critic (Flash)
