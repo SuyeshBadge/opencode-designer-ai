@@ -22,9 +22,9 @@
       }
     },
     "design-researcher": {
-      "description": "Expert design researcher who conducts competitive analysis, gathers design inspiration, identifies trends, and builds reference libraries. Uses DeepSeek V4 Pro for analytical decomposition of research findings.",
+      "description": "Expert design researcher who conducts competitive analysis, gathers design inspiration, identifies trends, and builds reference libraries. Uses DeepSeek V4 Flash for cheap, fast web research.",
       "mode": "subagent",
-      "model": "opencode-go/deepseek-v4-pro",
+      "model": "opencode-go/deepseek-v4-flash",
       "color": "#3B82F6",
       "permission": {
         "edit": "deny",
