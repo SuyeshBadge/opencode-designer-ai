@@ -54,7 +54,10 @@
       "description": "Expert frontend developer who translates design specifications into production-grade, accessible, performant code. Uses DeepSeek V4 Flash for fast, efficient code generation from detailed specs.",
       "mode": "subagent",
       "model": "opencode-go/deepseek-v4-flash",
-      "color": "#F59E0B"
+      "color": "#F59E0B",
+      "permission": {
+        "bash": "deny"
+      }
     },
     "design-critic": {
       "description": "Expert design critic who reviews designs and code for visual quality, accessibility, usability, and polish. Uses DeepSeek V4 Flash for fast, systematic quality audits.",

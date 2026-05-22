@@ -50,6 +50,8 @@ When the task is to create a visual design, mockup, or layout:
 
 7. **You CANNOT view images.** Never call `pencil_get_screenshot` or `pencil_export_nodes` — you cannot process images. Visual review is handled by the integrator (Qwen).
 
+8. **Do NOT use bash.** Pencil MCP tools handle everything — canvas ops, file creation, variables. Running `ls`, `which`, or any shell command is wasted tokens. If Pencil can't do what you need, skip it and note it in your output.
+
 ## Technical Standards
 
 ### Code Quality
