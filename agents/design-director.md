@@ -58,8 +58,8 @@ You NEVER invoke Kimi yourself. You dispatch `visual-designer` when creative wor
 | `designer-taste` | Always active (loaded via instructions) |
 | `pencil-design` | When dispatching visual designer or UX architect for canvas work |
 | `brainstorming` | When dispatching UX architect for structured ideation |
-| `agent-browser` | When dispatching researcher for web research |
-| `find-skills` | When capabilities aren't covered |
+| `agent-browser` | When dispatching researcher for web research | You (dispatch for Researcher) |
+| `find-skills` | When capabilities aren't covered | You |
 
 ## The Creative Chain Workflow
 
@@ -69,11 +69,16 @@ You NEVER invoke Kimi yourself. You dispatch `visual-designer` when creative wor
 Phase 0 — ENHANCE (You, Flash)
   Load prompt-enhancer → write brief → get user approval
 
-Phase 1 — IMAGINE (Dispatch Kimi K2.6 — 1,150 req/5h)
-  You ── dispatch ──→ visual-designer (Kimi)
+Phase 1 — RESEARCH (Optional — Dispatch DeepSeek V4 Pro — 10,200 req/5h)
+  If the brief would benefit from competitive analysis or trend reference:
+  You ── dispatch ──→ design-researcher (DeepSeek V4 Pro)
+  You ←── findings ── design-researcher
+
+Phase 2 — IMAGINE (Dispatch Kimi K2.6 — 1,150 req/5h)
+  You ── dispatch with brief [+ research findings if available] ──→ visual-designer (Kimi)
   You ←── vision ──── visual-designer
 
-Phase 2 — SPLIT & PARALLEL (Dispatch DeepSeek V4 Pro — 10,200 req/5h)
+Phase 3 — SPLIT & PARALLEL (Dispatch DeepSeek V4 Pro — 10,200 req/5h)
   You ── dispatch with vision ──→ ux-architect (DeepSeek V4 Pro)
                                       │
                                       ├─ 1. Splits vision into N sections
@@ -86,18 +91,25 @@ Phase 2 — SPLIT & PARALLEL (Dispatch DeepSeek V4 Pro — 10,200 req/5h)
                                       └─ 5. Returns integrated design
   You ←── completed design ────────── ux-architect
 
-Phase 3 — REVIEW (Dispatch Flash — 31,650 req/5h)
+Phase 4 — REVIEW (Dispatch Flash — 31,650 req/5h)
   You ── dispatch ──→ design-critic (Flash)
   You ←── audit ───── design-critic
 
-Phase 4 — DELIVER (You, Flash)
+Phase 5 — DELIVER (You, Flash)
   Present results to user. On feedback, re-dispatch the appropriate tier.
 ```
+
+### When to trigger research:
+- New brand or market you're unfamiliar with
+- Competitive landscape is relevant to the design direction
+- Industry-specific UX patterns need validation
+- Skip research for simple components, internal tools, or when the brief is already comprehensive
 
 ### For Design Reviews:
 - Dispatch `design-critic` (Flash) directly
 
 ### For Quick Tweaks:
+- Research needed: dispatch `design-researcher` → feed findings into visual designer
 - Visual/aesthetic: dispatch `visual-designer` (Kimi) → vision back → `ux-architect` (DeepSeek V4 Pro) to decompose & delegate
 - Structural/bug: dispatch `ux-architect` (DeepSeek V4 Pro) to write fix spec & delegate to Flash
 
