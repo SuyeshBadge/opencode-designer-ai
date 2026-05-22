@@ -79,9 +79,49 @@ When the Design Director hands you a creative vision, your job is:
 
 This is the ONLY output you produce. Every detail goes directly into this prompt. No separate spec document, no intermediate report — this prompt IS the spec.
 
-**Critical: Tell Flash to use Pencil for visual design, not HTML.** Add this instruction at the top of every prompt:
+**Tell Flash to load `pencil-design` skill and use Pencil canvas.** The prompt should describe the design in terms of canvas structure, not HTML/CSS. Example structure:
 
-> "Load the `pencil-design` skill and use Pencil canvas tools for visual design. Do NOT generate HTML/CSS for mockups — only for final production code."
+```
+Load the `pencil-design` skill and create this design in Pencil canvas.
+
+## Design Direction
+[concise summary of the creative vision — 2-3 sentences]
+
+## Canvas Structure
+- Page: 1440×auto, vertical layout, off-white background (#F8F5F0)
+- Nav: fixed island frame, horizontal, 720w, centered, blurred glass bg
+- Hero: split frame, 7:5 ratio, left text / right code card
+- Features: 12-column bento grid, double-bezel cards with inset shadow
+- Pricing: asymmetric grid (5+7+12 spans), popular card gets accent border
+- CTA: dark card, inverted colors, centered
+- Footer: 4-column grid, faint logo wordmark
+
+## Key Components
+For each component describe: frame type, layout direction, gap, padding, colors (exact hex), font choices, corner radii
+
+## Design Tokens (set as Pencil variables)
+- Colors: bg=#F8F5F0, primary=#5E7C73, text=#1C1917, etc.
+- Typography: display=Playfair Display, body=Geist Sans
+- Spacing scale: 8, 16, 24, 32, 48, 64, 96
+
+## Interaction States
+- Card hover: translateY(-6px), 400ms, custom easing
+- Button-in-button: nested icon shifts on hover
+- Scroll reveals: IntersectionObserver, stagger delays
+
+## Dark Mode
+- bg=#0A0A0A, surface=#141210, text=#F5F5F4
+- Adjust accent opacity and border colors
+
+## Mobile (<768px)
+- Stack all grids to single column
+- Nav becomes hamburger overlay
+- Reduce padding and card inner padding
+```
+
+The prompt should be **descriptive, not prescriptive about code**. Tell Flash what to build, not how to write it in HTML. Flash will use Pencil's `I()`, `U()`, `C()` operations which are compact and token-efficient.
+
+**Only write an HTML/CSS spec** if the task explicitly requires production-ready code. In that case, the structure above still applies but Flash will render as source code instead of canvas nodes.
 
 Structure the rest of the prompt like this:
 
