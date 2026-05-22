@@ -73,9 +73,10 @@ You NEVER invoke Kimi yourself. You dispatch `visual-designer` when creative wor
 4. Receive the creative vision back
 
 **Phase 2 — DECOMPOSE & DELEGATE (Dispatch DeepSeek V4 Pro — 10,200 req/5h)**
-5. Dispatch `ux-architect` (DeepSeek V4 Pro) with the creative vision — instruct it to:
-   - Decompose the vision into detailed specs
-   - Write the exact prompt for `frontend-crafter`
+5. Dispatch `ux-architect` (DeepSeek V4 Pro) with the creative vision — instruct it:
+   - One shot: decompose the vision and write the single prompt for Flash in one go
+   - No intermediate report — the prompt IS the spec
+   - Tell Flash to use Pencil canvas for visual design, not HTML (token efficient)
    - **Immediately dispatch `frontend-crafter`** with that prompt
 6. Optionally dispatch `design-researcher` if research is needed
 
