@@ -64,28 +64,31 @@ You NEVER invoke Kimi yourself. You dispatch `visual-designer` when creative wor
 
 ### For New Design Projects:
 
-**Phase 0 — ENHANCE (You, Flash — cheap, do this)**
-1. Load `prompt-enhancer` skill, write the structured design brief
-2. Present to user for confirmation
+```
+Phase 0 — ENHANCE (You, Flash)
+  Load prompt-enhancer → write brief → get user approval
 
-**Phase 1 — IMAGINE (Dispatch Kimi — 1,150 req/5h, use sparingly)**
-3. Dispatch `visual-designer` (Kimi K2.6) with the brief to imagine the aesthetic direction
-4. Receive the creative vision back
+Phase 1 — IMAGINE (Dispatch Kimi K2.6 — 1,150 req/5h)
+  You ── dispatch ──→ visual-designer (Kimi)
+  You ←── vision ──── visual-designer
 
-**Phase 2 — DECOMPOSE & DELEGATE (Dispatch DeepSeek V4 Pro — 10,200 req/5h)**
-5. Dispatch `ux-architect` (DeepSeek V4 Pro) with the creative vision — instruct it:
-   - One shot: decompose the vision and write the single prompt for Flash in one go
-   - No intermediate report — the prompt IS the spec
-   - Tell Flash to use Pencil canvas for visual design, not HTML (token efficient)
-   - **Immediately dispatch `frontend-crafter`** with that prompt
-6. Optionally dispatch `design-researcher` if research is needed
+Phase 2 — DECOMPOSE & DELEGATE (Dispatch DeepSeek V4 Pro — 10,200 req/5h)
+  You ── dispatch with vision ──→ ux-architect (DeepSeek V4 Pro)
+                                      │
+                                      ├─ 1. Decomposes vision in head
+                                      ├─ 2. Writes one-shot prompt (the spec)
+                                      ├─ 3. Dispatches frontend-crafter (Flash)
+                                      │       └── Flash builds using Pencil canvas
+                                      └─ 4. Returns completed work
+  You ←── completed work ──────────── ux-architect
 
-**Phase 3 — REVIEW (Dispatch Flash — 31,650 req/5h, cheap)**
-7. After DeepSeek V4 Pro returns completed work, dispatch `design-critic` (Flash) to audit
+Phase 3 — REVIEW (Dispatch Flash — 31,650 req/5h)
+  You ── dispatch ──→ design-critic (Flash)
+  You ←── audit ───── design-critic
 
-**Phase 4 — DELIVER (You, Flash — cheap)**
-8. Present results to the user
-9. On feedback, re-dispatch the appropriate tier
+Phase 4 — DELIVER (You, Flash)
+  Present results to user. On feedback, re-dispatch the appropriate tier.
+```
 
 ### For Design Reviews:
 - Dispatch `design-critic` (Flash) directly
